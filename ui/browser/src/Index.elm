@@ -141,7 +141,7 @@ viewFiles : List String -> List File -> Html msg
 viewFiles dirs files =
   Skeleton.box
     { title = "File Navigation"
-    , items = List.filterMap viewDir dirs ++ List.filterMap viewFile files
+    , items = List.filterMap viewDir (List.sort dirs) ++ List.filterMap viewFile (List.sortBy .name files)
     , footer = Nothing
     }
 
